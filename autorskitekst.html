@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ауторски текст | Такмичарски голубови</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ауторски текст о такмичарским голубовима – сећања, почеци и приче из голубарника.">
+
+  <!-- (isti fonts + fontawesome) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+      :root {
+            --gold: #d6b25e;
+            --soft-gold: #f1d9a0;
+            --bg-deep: #050816;
+            --bg-navy: #1e2940;
+            --text-light: #f6f3e8;
+            --muted: #b3a48a;
+            --accent-blue: #7aa6ff;
+              --bg-solid: #18243a; /* isto kao --bg-navy, ili malo finije po želji */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            color: var(--soft-gold);
+         background: var(--bg-solid);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* HEADER */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: rgba(5, 8, 22, 0.9);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(214, 178, 94, 0.25);
+        }
+
+        .header-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+     .brand-mark {
+            width: 60px !important;
+            height: 60px !important;
+            /* border-radius: 50%;
+            border: 1px solid rgba(214, 178, 94, 0.6); */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Cinzel", serif;
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .brand-mark img {
+    width: 100%;
+    height: auto;
+}
+
+        .brand-text span {
+            display: block;
+            line-height: 1.2;
+        }
+
+        .brand-name {
+            font-family: "Cinzel", serif;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .brand-sub {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+        }
+
+        nav a {
+            position: relative;
+            padding-bottom: 3px;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width .25s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a.is-active {
+            color: var(--gold);
+        }
+
+        nav a.is-active::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid rgba(214, 178, 94, 0.5);
+            background: transparent;
+            color: var(--soft-gold);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .nav-toggle span,
+        .nav-toggle span::before,
+        .nav-toggle span::after {
+            display: block;
+            width: 14px;
+            height: 2px;
+            background: var(--soft-gold);
+            border-radius: 999px;
+            position: relative;
+            transition: transform .3s, opacity .3s;
+        }
+
+        .nav-toggle span::before,
+        .nav-toggle span::after {
+            content: "";
+            position: absolute;
+            left: 0;
+        }
+
+        .nav-toggle span::before {
+            top: -5px;
+        }
+
+        .nav-toggle span::after {
+            top: 5px;
+        }
+
+        .nav-open .nav-toggle span {
+            transform: rotate(45deg);
+        }
+
+        .nav-open .nav-toggle span::before {
+            transform: rotate(-90deg);
+            top: 0;
+        }
+
+        .nav-open .nav-toggle span::after {
+            opacity: 0;
+        }
+
+        /* LAYOUT */
+
+        main {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 40px 24px 70px;
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            font-family: "Cinzel", serif;
+            font-size: 24px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+
+        .section-subtitle {
+            font-family: "Lora", serif;
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 26px;
+        }
+
+        /* HERO GOLUBOVI */
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+            gap: 40px;
+            align-items: center;
+            padding-top: 40px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: -260px 40% 40%;
+            background: radial-gradient(circle at top, rgba(122, 166, 255, 0.25), transparent 60%);
+            opacity: .8;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+
+        .hero-copy {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            font-size: 11px;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .hero-title {
+            font-family: "Cinzel", serif;
+            font-size: 32px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            line-height: 1.5;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+
+        .hero-title i {
+            color: var(--accent-blue);
+            margin-right: 8px;
+        }
+
+        .hero-lead {
+            font-family: "Lora", serif;
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 24px;
+            max-width: 520px;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary,
+        .btn-ghost {
+            border-radius: 999px;
+            padding: 10px 22px;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            border: 1px solid var(--gold);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background .3s, color .3s, transform .3s, box-shadow .3s;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: #050509;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 22px 60px rgba(0, 0, 0, 0.75);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--soft-gold);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(214, 178, 94, 0.12);
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .hero-meta span strong {
+            display: block;
+            font-size: 14px;
+            color: var(--soft-gold);
+            margin-bottom: 1px;
+        }
+
+        .hero-media {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-frame {
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid rgba(214, 178, 94, 0.45);
+            box-shadow: 0 26px 70px rgba(0, 0, 0, 0.9);
+            background: #000;
+        }
+
+        .hero-photo {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .hero-badge {
+            position: absolute;
+            right: -10px;
+            bottom: -14px;
+            border-radius: 16px;
+            border: 1px solid rgba(122,166,255,0.7);
+            padding: 10px 14px;
+            font-size: 11px;
+            background: rgba(4, 8, 26, 0.96);
+            color: var(--text-light);
+            max-width: 210px;
+        }
+
+        .hero-badge strong {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--accent-blue);
+            margin-bottom: 4px;
+        }
+
+        /* AUTORSKI TEKСТ – PLACEHOLDER BLOК */
+
+        .author-block {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+            gap: 36px;
+            align-items: flex-start;
+        }
+
+        .author-text {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .author-note {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 14px;
+            font-style: italic;
+        }
+
+        .author-placeholder {
+            border-radius: 16px;
+            border: 1px dashed rgba(214, 178, 94, 0.5);
+            padding: 16px 16px 18px;
+            background: rgba(5, 8, 22, 0.96);
+            font-size: 13px;
+            color: var(--muted);
+            font-family: "Lora", serif;
+        }
+
+        .author-placeholder strong {
+            color: var(--soft-gold);
+        }
+        /* AUTORSKI TEKST – formatiranje dugog narativa */
+
+.author-text .longform {
+    max-width: 760px;
+}
+
+.author-text .longform p {
+    margin: 0 0 12px 0;
+}
+
+.author-text .longform p:last-child {
+    margin-bottom: 0;
+}
+
+.author-text .longform .lead {
+    font-family: "Lora", serif;
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--text-light);
+}
+
+.author-text .longform .divider {
+    margin: 18px 0;
+    height: 1px;
+    background: rgba(214, 178, 94, 0.25);
+}
+
+.author-text .longform h3 {
+    font-family: "Cinzel", serif;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 18px 0 10px;
+}
+
+
+        /* GALERIJA GOLUBOVA */
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .gallery-item {
+            border-radius: 16px;
+            border: 1px solid rgba(214, 178, 94, 0.35);
+            overflow: hidden;
+            background: rgba(6, 8, 20, 0.96);
+            box-shadow: 0 18px 48px rgba(0,0,0,0.8);
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+        }
+
+        .gallery-item img {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-body {
+            padding: 10px 12px 12px;
+            font-size: 12px;
+        }
+
+        .gallery-body h3 {
+            font-family: "Cinzel", serif;
+            font-size: 14px;
+            color: var(--soft-gold);
+            margin-bottom: 4px;
+        }
+
+        .gallery-body p {
+            color: var(--muted);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 26px 70px rgba(0,0,0,0.9);
+            border-color: var(--gold);
+        }
+
+        /* GOLUBOVI NA PRODAJU – GRID */
+
+        .for-sale-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .sale-card {
+            border-radius: 18px;
+            border: 1px solid rgba(214, 178, 94, 0.35);
+            background: rgba(6, 8, 20, 0.96);
+            padding: 16px 16px 18px;
+            box-shadow: 0 18px 50px rgba(0,0,0,0.8);
+            font-size: 13px;
+            max-width: 320px;      /* da ne bude razvučeno preko cele širine */
+            justify-self: center;  /* centriraj karticu unutar grid kolone */
+        }
+
+        .sale-title {
+            font-family: "Cinzel", serif;
+            font-size: 15px;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+
+        .sale-meta {
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .sale-meta span {
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .sale-desc {
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .sale-badge {
+            display: inline-block;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--accent-blue);
+            margin-bottom: 4px;
+        }
+
+        .sale-cta {
+            margin-top: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        /* Foto na kartici goluba */
+        .sale-photo-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            margin: -4px -4px 10px;
+        }
+
+        .sale-photo {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Dugme za pedigre */
+        .pedigree-btn {
+            border-radius: 999px;
+            padding: 7px 16px;
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            border: 1px solid var(--gold);
+            background: transparent;
+            color: var(--soft-gold);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background .25s ease, color .25s ease, transform .2s ease;
+        }
+
+        .pedigree-btn i {
+            font-size: 12px;
+        }
+
+        .pedigree-btn:hover {
+            background: var(--gold);
+            color: #050509;
+            transform: translateY(-1px);
+        }
+
+        .sale-cta a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border-radius: 999px;
+            border: 1px solid var(--gold);
+            padding: 7px 14px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--soft-gold);
+            transition: background .25s ease, color .25s ease, transform .2s ease;
+        }
+
+        .sale-cta a:hover {
+            background: var(--gold);
+            color: #050509;
+            transform: translateY(-1px);
+        }
+
+        /* CTA SEKCIJA */
+
+        .cta {
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        .cta p {
+            margin: 14px auto 22px;
+            max-width: 520px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .cta small {
+            display: block;
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 26px 18px 16px;
+            font-size: 12px;
+            color: var(--muted);
+            border-top: 1px solid rgba(214, 178, 94, 0.25);
+            text-align: center;
+        }
+
+        footer span {
+            display: block;
+            margin: 2px 0;
+        }
+
+        footer a {
+            text-decoration: underline;
+            text-decoration-color: rgba(214, 178, 94, 0.6);
+        }
+
+        /* SCROLL REVEAL */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE NAV */
+
+        @media (max-width: 960px) {
+            .hero {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .hero-photo {
+                height: 220px;
+            }
+            .author-block {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                position: fixed;
+                inset: 64px 16px auto 16px;
+                padding: 16px 18px;
+                border-radius: 18px;
+                background: rgba(5, 8, 22, 0.98);
+                border: 1px solid rgba(214, 178, 94, 0.3);
+                flex-direction: column;
+                gap: 14px;
+                transform: translateY(-20px);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity .3s ease, transform .3s ease;
+            }
+
+            .nav-open nav {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(0);
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+            }
+
+            .header-inner,
+            main {
+                padding-inline: 18px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .hero-badge {
+                right: 6px;
+                bottom: -10px;
+                max-width: 190px;
+            }
+        }
+
+        /* FULLSCREEN MODAL ZA ПЕДИГРЕ */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            display: none;
+            z-index: 9999;
+        }
+
+        .modal.is-open {
+            display: block;
+        }
+
+        .modal-content {
+            position: absolute;
+            inset: 0;
+            background: transparent;
+            padding: 20px;
+            overflow: auto;
+        }
+
+        #pedigreeImg {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            background: #000;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: none;
+            background: var(--gold);
+            color: #050509;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 10000;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+        }
+
+        .modal-close:hover {
+            filter: brightness(0.95);
+        }
+
+
+        /* SARADNICI / KONTAKT KARTICE */
+
+.collab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 14px;
+}
+
+.collab-card {
+  border-radius: 18px;
+  border: 1px solid rgba(214, 178, 94, 0.35);
+  background: rgba(6, 8, 20, 0.96);
+  padding: 16px 16px 18px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.8);
+}
+
+.collab-card h3 {
+  font-family: "Cinzel", serif;
+  font-size: 15px;
+  color: var(--soft-gold);
+  margin: 6px 0 6px;
+}
+
+.collab-meta {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.collab-badge {
+  display: inline-block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-blue);
+  margin-bottom: 4px;
+}
+
+.collab-badge--alt {
+  color: var(--gold);
+}
+
+.collab-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.collab-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 999px;
+  border: 1px solid var(--gold);
+  padding: 7px 14px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--soft-gold);
+  transition: background .25s ease, color .25s ease, transform .2s ease;
+}
+
+.collab-actions a:hover {
+  background: var(--gold);
+  color: #050509;
+  transform: translateY(-1px);
+}
+
+.collab-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+/* --- LANGUAGE SWITCHER --- */
+.lang-switcher {
+    position: relative;
+    margin-left: 14px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.lang-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid rgba(214, 178, 94, 0.5);
+    background: transparent;
+    color: var(--soft-gold);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+
+.lang-btn:hover {
+    transform: translateY(-1px);
+    border-color: var(--gold);
+    background: rgba(214, 178, 94, 0.10);
+}
+
+.lang-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 190px;
+    border-radius: 14px;
+    border: 1px solid rgba(214, 178, 94, 0.3);
+    background: rgba(5, 8, 22, 0.98);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    display: none;
+    z-index: 999;
+}
+
+.lang-switcher.open .lang-menu {
+    display: block;
+}
+
+.lang-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.lang-item:hover {
+    background: rgba(214, 178, 94, 0.10);
+    border-color: rgba(214, 178, 94, 0.25);
+}
+
+.flag {
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* === GOOGLE TRANSLATE: ukloni top banner (kao na starom sajtu) === */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+.goog-te-gadget-icon {
+  display: none !important;
+}
+
+html body > .skiptranslate,
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+}
+
+html { top: 0 !important; }
+body { top: 0 !important; }
+
+/* dopune koje često trebaju na modernijem layout-u */
+iframe.goog-te-banner-frame { display: none !important; }
+#goog-gt-tt, .goog-tooltip, .goog-tooltip:hover,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+/* --- AUTORSKI TEKST PREVIEW --- */
+.author-preview {
+  position: relative;
+  max-width: 760px;
+}
+
+.author-preview .fadeout {
+  position: relative;
+  max-height: 320px;            /* koliko teksta želiš da se vidi */
+  overflow: hidden;
+}
+
+.author-preview .fadeout::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 90px;
+  background: linear-gradient(180deg, rgba(24,36,58,0), rgba(24,36,58,1));
+  pointer-events: none;
+}
+
+.read-more {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+  </style>
+</head>
+
+<body>
+ <header>
+    <div class="header-inner">
+        <div class="brand">
+            <div class="brand-mark"><img src="ChatGPT Image Dec 8, 2025, 09_09_13 PM.png" alt="logo"></div>
+            <div class="brand-text">
+                <span class="brand-name notranslate">БОЛЕСНИКОВ</span>
+                <span class="brand-sub">златарска радња · Нови Сад</span>
+            </div>
+        </div>
+
+        <nav aria-label="Главна навигација">
+            <a href="index.html#hero">Насловна</a>
+            <a href="index.html#about">О златари</a>
+            <a href="index.html#services">Услуге</a>
+            <a href="proizvodi.html">Колекција</a>
+            <a href="index.html#contact">Контакт</a>
+
+         
+            <!-- Дугме – Font Awesome голуб -->
+    <a href="golubovi.html" class="pigeon-btn" aria-label="Такмичарски голубови">
+        <i class="fa-solid fa-dove"></i>
+    </a>
+ <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn" id="langBtn" type="button" aria-label="Language">
+        <i class="fa-solid fa-globe"></i>
+    </button>
+
+   <div class="lang-menu" id="langMenu" role="menu" aria-label="Choose language">
+  <button class="lang-item" type="button" data-lang="sr">
+    <span class="flag">🇷🇸</span> <span class="lang-label notranslate" translate="no">Srpski</span>
+  </button>
+
+  <button class="lang-item" type="button" data-lang="en">
+    <span class="flag">🇬🇧</span> <span class="lang-label notranslate" translate="no">English</span>
+  </button>
+
+  <button class="lang-item" type="button" data-lang="nl">
+    <span class="flag">🇳🇱</span> <span class="lang-label notranslate" translate="no">Nederlands</span>
+  </button>
+
+  <button class="lang-item" type="button" data-lang="de">
+    <span class="flag">🇩🇪</span> <span class="lang-label notranslate" translate="no">Deutsch</span>
+  </button>
+
+  <button class="lang-item" type="button" data-lang="zh-CN">
+    <span class="flag">🇨🇳</span> <span class="lang-label notranslate" translate="no">中文</span>
+  </button>
+
+  <button class="lang-item" type="button" data-lang="hu">
+    <span class="flag">🇭🇺</span> <span class="lang-label notranslate" translate="no">Magyar</span>
+  </button>
+
+  <button class="lang-item" type="button" data-lang="es">
+    <span class="flag">🇪🇸</span> <span class="lang-label notranslate" translate="no">Español</span>
+  </button>
+
+  <button class="lang-item" type="button" data-lang="it">
+    <span class="flag">🇮🇹</span> <span class="lang-label notranslate" translate="no">Italiano</span>
+  </button>
+</div>
+
+
+</div>
+
+<!-- Hidden container for Google Translate -->
+
+
+
+        </nav>
+
+
+
+
+        <button class="nav-toggle" aria-label="Мени">
+            <span></span>
+        </button>
+    </div>
+</header>
+
+
+  <main>
+    <section class="reveal" style="padding-top:40px;">
+      <p class="hero-eyebrow">АУТОРСКИ ТЕКСТ</p>
+      <h1 class="hero-title">Како је све почело…</h1>
+
+      <div class="author-text">
+  <div class="longform">
+    <p class="lead"><strong>Како је све почело…</strong></p>
+
+    <p>
+      Некако од кад знам за себе, волео сам перје и све што се креће и живи... тата је такође у младости гајио голубове и то је
+      за време 50-тих година прошлог века било сасвим нормално. Готово свака кућа у селу је имала таван са голубовима који су се
+      ту насељавали и они су имали сврху, прво су чистили двориште од остатака зрневља за кокама а као друго служили су и за јело.
+      Такође и у Новом Саду на Рибљој пијаци, људи су доносили и продавали младе голубове за јело. Сасвим нормална појава је била
+      голубија супа и поховано месо голубчића недељом, широм ове регије. Полако и бојажљиво су се појављивали и неки украсни голубови
+      и по неки залутали спортски голуб.
+    </p>
+
+    <p>
+      Тако да моја повезаност са голубовима никако није била и није случајна и дан данас....
+    </p>
+
+    <div class="divider"></div>
+
+    <p>
+      Две деценије касније, сазнао сам, савим случајно да су ти голубови били енглески типлери познати по целодневном лету,
+      али наша домаћа изведба, такозвани "Кикиндски Роздаши" (неки примерци донети из Енглеске 1928. године по неким предањима
+      и након тога је настао овај варијетет...).
+    </p>
+
+    <p>
+      Дани су пролазили, крај лета и почетак школе је био на видику. Поподневни одмор, претворио се у пасију, покушао сам да
+      проникнем у њихову ћуд и ко је ту коме шта? Убрзо сам схватио да су у питању четири женке и три мужјака. Три пара су се
+      шепурила и била некако скрајнута, сваки пар за себе, а женка која је била сама, стално је нешто тражила. Након десетак дана
+      и моје уобичајене рутине и дружења са њима, остало их је само шест. Гледао сам, шетао наоколо не бих ли видео где се деде
+      седми голуб, али од њега, у ствари ње, није било трага.
+    </p>
+
+    <p>
+      Изненанда се ка крову комшијске куће обрушио соко, готово нестварном брзином, голубови су се дали у бег, на све стране,
+      покушавајући да побегну и да сачувају живот. Нисам могао да верујем шта се догађа и да ли постоји начин да им помогнем.
+      На моје запрепашћење, соко је нападао више пута, голубови су безали главом без обзира, све је трајало минут а мене се чинило
+      читаву вечност, зебња ми се у тренутку увукла у срце, шта ће се договити са њима?
+    </p>
+
+    <p>
+      Успели су, сви су на сигурном, после неког времена, један по један су се вратили на своје зборно место, постало ми је јасно
+      шта се догодило са женкицом које више није било а вероватно и са њеним мужјаком, којег никада нисам видео.
+    </p>
+
+    <p>
+      Тешко ми је било да то прихватим и питао сам се зашто мора тако да се заврши.....
+    </p>
+
+    <div class="divider"></div>
+
+    <p>
+      Повратак у Каћ, место где сам одрастао, је био питање дана. Заокупљеност голубовима, била је у другом плану. Први школски дани,
+      нови другари, само је на путу до школе и назад, са баком, поглед лутао са крова на кров, не би ли уочио неке сличне голубове.
+      Мислим да сам знао сваки кров од школе до куће.
+    </p>
+
+    <p>
+      Време је одмицало и прошло је прво полу годиште. Негде у пролеће, током шетње школским двориштем, угледао сам у углу, иза зграде,
+      мали голубарник. Прво бојажљиво, а после извесног времена сам био редовно на његовој жици, гледајући пернате становнике.
+      Биле су то писмоноше, у својој пуној раскоши, спремни за лет и такмичење, савршеног перја, које је сијало на сунцу,
+      у готово свим постојећим голубијим бојама.
+    </p>
+
+    <p>
+      Недуго затим, видео сам човека који улази код њих и храни их, са толико пажње и нежности, обраћајући се свакоме од њих по имену....
+      Голубови као да су знали како се ко зове и шта се од њих очекује.
+    </p>
+
+    <p>
+      Тај човек је био и још увек је, супруг моје учитељице, а испоставиће се много година касније и мој голубарски учитељ.
+      Живот је хтео да у једној породици упознам двоје људи, који су ми дали темељ за будући живот, учитељица Драгица и чика Тоша.....
+    </p>
+
+    <div class="divider"></div>
+
+    <p>
+      Видевши да је моја љубав према голубовима немерљива, тата ми поклања вршачке превртаче, које смо донели управо из Павлиса,
+      где сам се први пут срео са расним голубовима. Држали смо их у гаражи у старом ормару. Пошто су били уметници лета и превртања,
+      никакав проблем им није представљало, што треба да улете као акробате, кроз врата, до свог места.
+    </p>
+
+    <p>
+      Са почетком нове школске године и другог разреда, стиже за мене неочекиван поклон, чика Тоша ми поклања прве писмоноше,
+      били су то црвени и црни, два брата из гнезда. Преграђивање тавана је било под хитно, а срећа је била што је прозор моје собе
+      гледао и излазио директно на малу терасицу тавана. Веће среће и срећнијег од мене није било, моје прве писмоноше!!!!!
+    </p>
+
+    <p>
+      Чини ми се да тих месеци ни једном нисам сишао степеницама у кућу, већ кроз прозор, па у таван па мердевинама доле у двориште,
+      са првом станицом у голубарнику. Продужни кабл са сијалицом је било дело индустријске револуције, у мом Свету.
+      Дане и ноћи након одрађених школских задатака, проводио сам у голубарнику, упознавао сам ја њих и они мене.
+      Тада сам научио да и голубови, као пси или мачке, одлично и сасвим сигурно препознају своје власнике, тачније људе који се брину о њима......
+      из ове перспективе, испоставиће се, родила се љубав за цео живот.....
+    </p>
+
+    <p>
+      И данас се сећам тих тренутака, чини ми се да сам тада много више знао о њима него сада, колико год се то чини наопако......
+    </p>
+
+    <div class="divider"></div>
+
+    <p>
+      Како обично бива, нестрпљење које је у мом случају свеприсутно, је учинило своје. Младе голубове по одвајању треба неколико дана
+      држати у волијери, да би видели своју околину и знали где им је нови дом. Ја нисам могао више да чекам и отворио сам улазе,
+      Црвени и Црни су брзином светлости излетели напоље, након неког времена црни се вратио и постао мој највернији љубимац,
+      на жалост црвеног више није било. Тужан и помало разочаран, својом грешком, јер голубови никада нису криви, увек је проблем у
+      одгајивачу/власнику, ишао сам околним улицама у потрази за Црвеним. Нигде га није било, био сам тужан и разочаран, није могао
+      трен да прође а да не погледам у небо или да погледом претражујем кровове, не би ли га спазио.
+    </p>
+
+    <p>
+      Враћајућу се из школе, једног поподнева, угледао сам Црвеног на комшијској кући, како ужива са својом женком, населио се у празан
+      таван комшијске куће, снашао се у природи за храну, нашао воду и вратио се оној исконској урођеној особини, постао је дивљи голуб.
+    </p>
+
+    <p>
+      Ипак ми је било драго, јер сам видео да је жив, да га грабљивице нису дохватиле и да ужива у свом окружењу. Често је знао да
+      прелети преко моје куће, као да је желео да ми да неки знак, да ме није заборавио али се одлучио на другачији начин живота.
+      Чудно, али ни ја никада нисам покушао да га ухватим и да га присилим да се врати, јер ни у животу не иде тако, стеге никога нису задржале....
+    </p>
+
+    <p>
+      Месецима касније, мало јато је било формирано, али Црвени и Црни су заувек остали у мом срцу. Први климави кораци у свет такмичења
+      са писмоношама били су на видику....
+    </p>
+
+    <div class="divider"></div>
+
+    <p>
+      Бројао сам дане до првог тренинга, мојих младих голубова. Почиње се са првим тренизима са удаљености од неких 5 километара,
+      па сваких неколико дана, они се носе све даље и даље, тражећи пут ка својој кући.
+    </p>
+
+    <p>
+      Аутомобил је у то време био луксуз за све, на срећу кроз мој Каћ је пролазио шинобус, којим смо чика Тоша и ја путовали до Н.Сада,
+      са нашим љубимцима у кутијама а онда даље до Бачког Петровца, где је била наша последња станица. Погледи путника, који су листом
+      ишли на посао тим шинобусом у 5 сати ујутру, и њихова знатижеља, започињала је нашу причу, сваки пут изнова. Постоје моменти
+      којих се у животу сећате иако можда немају велику важност у вашем животу, или ипак имају, ово је један од тих момената,
+      који су се уцртали у моју меморију.
+    </p>
+
+    <p>
+      По повратку кући, путу никада није било краја, а ја сам нервозно цупкао по шинобусу, трчећи са станице кући, да видим да ли су
+      голубови дошли. Недостајало је неколико њих, јако сам се растужио и дан данас после 35 година тугујем за сваким изгубљеним голубом,
+      никада нисам успео да се помирим са чињеницом да нису сви предодређени за добре такмичаре и истрајне борце, без обзира на негу и порекло.
+    </p>
+
+    <p>
+      Дошао је на ред и први такмичарски лет, голубове смо однели у клуб, био сам мањи од маковог зрна, гледао и упијао сваку реч
+      такмичара око мене, биле су то легенде југословенског у то време а касније српског голубарства. Дотерани, са тачним распоредом
+      седења, прављења комисија за паковање и врло озбиљни, у мојим дечјим очима били су огромни, у сваком погледу.
+    </p>
+
+    <p>
+      Сваки голуб је добио своју такмичарску гумицу са бројем, која му је стављана на ногу, након тога бива заведен у такмичарски лист
+      и убачен у камион са кавезима. На послетку је увек било обавезно појење голубова, како би им се утолила жеђ, током путовања.
+    </p>
+
+    <p>
+      Недељно јутро, у 6 сати звони телефон, чика Тоша јавља: "мали чекај, пуштени су голубови, ако буде све у реду са 120 километара,
+      требало би да дођу за нека два сата..." мислим да су то најдужа два сата у мом животу била..... у једном моменту црна тачка је као гром
+      падала ка мом крову, "ево га, тата ево га," викао сам из свег гласа, сачекао сам да голуб уђе у голубарник, скинуо му прстен са ноге,
+      зајахао бицикл и правац у центар код чика Тоше, да убацимо прстен у сат.
+    </p>
+
+    <p>
+      То су били механички сатови са добошем у који се убацивало прстење и приликом сваког откуцаја након убацивања гуменог прстена,
+      на покретној папирној траци је остајао отисак о времену доспећа одређеног голуба....... Чини ми се да сам од улаза у Каћ,
+      где сам живео, до центра долетео за два минута..... цичао сам од среће, верујте ми да и сада одскачем од столице док ово куцам,
+      исто али исто осећање ме прожима......
+    </p>
+
+    <p>
+      Какви су то дани детињства били.........
+    </p>
+
+    <div class="divider"></div>
+
+    <p>
+      Дани су просто летели у ишчекивању викенда и паковања голубова за следеће такмичење. Увукли су ми се под кожу и тада сам знао,
+      да сам купљен за цео живот. Упознао сам толико дивних људи, а свима нам је била заједничка, љубав према писмоношама.
+      Када је голуб у питању, нису биле битне ни године, ни занимање ни друштвени положај, јер тамо смо били сви исти,
+      једина тема која нас је заокупљала, била је писмоноша.
+    </p>
+
+    <p>
+      Улица Марка Миљанова, голубарски клуб, у ћошку су се картали стари превејани асови, ја сам се са неколициом клинаца мувао по дворишту,
+      чекајући резултате претходног лета и покушавајући да сазнам нешто ново и евентуално добијем неког голуба.
+    </p>
+
+    <p>
+      Свако после подне смо шпартали бицикловима по селу, ја сам загледао кровове, надајући се да ћу наћи неког залуталог голуба,
+      Јоца, Арпад који је постао истински шампион и ја, били смо неуморни са идејама и преправкама наших тавана.
+      Јоца и Арпад су имали златне руке а ја прегршт идеја, од којих многе нису имале везе са мозгом али су мени звучале занимљиво.
+    </p>
+
+    <p>
+      Врхунац нашег проналазаштва била су гнезда која смо лили од бетона, после много и данас се смејемо, зато што пре месеца Маја
+      нисмо имали младе, јер су се јаја смрзавала на бетону..
+    </p>
+
+    <p>
+      Тада се у Каћ доселио Милан Пајовић - Мицке, легенда голубарства, често сам возио бицикл поред његове куће, не би ли успео да бацим
+      поглед на голубове, који су били утегнути као липицанери, двадесет година касније, постајемо пријатељи и то пријатељство траје и данас....
+    </p>
+
+    <p>
+      Темеринска пијаца је била прича за себе, пре ње место окупљања голубара била је Рибља пијаца. Тата је одлазио на рекреацију недељом
+      од 7 ујутру, ја сам га обучен чекао већ у 6 и једва чекао да ме остави на пијаци. Тих 4 или 5 сати проведених тамо, за мене је било
+      непроцењиво, знао сам сваку кутију и сваког голуба у њој, прегледао, добијао на поклон и то је у мојим очима било велико као кућа.
+    </p>
+
+    <p>
+      Увек је било и недодирљивих типова, шепурили су се међу нама, а својим надменим ставом и свим знањем Света, везаним за голубове.
+      Ми клинци, пратили смо их из прикрајка и са одушевљењем слушали те приче али скрајнути као неважни. Као и увек у животу, велика
+      већина таквих, није имала основе за такав став и опхођење, што се годинама касније и показало.
+    </p>
+
+    <p>
+      Дошао је на ред и полазак у средњу школу у Нови Сад, одлазак ујутру, повратак увече, све мање времена сам проводио са голубовима.
+      И сада ме нека сета ухвати када помислим како сам их све више запостављао. Моја интересовања су се проширила и они су остали тако
+      некако у запећку, непланирано ... Наше дружење се свело само на редовно храњење и летимичан поглед на њих а они као да су знали
+      и чекали су ме без изузетка, можда се надајући.... или сада већ умишљам ....
+    </p>
+
+    <p>
+      Тек сада, после 30 и више година, видим колико сам био срећан, што сам имао могућности да се дружим са њима и да одрастам у прелепом
+      месту - Каћу, које ће у мом срцу имати увек посебно место мада у раној младости није било тако. Поласком у средњу школу, променило се
+      и друштво на које сам навикао, дешавали су се коментари да смо сељаци и то ме баш погађало, до душе када сам покушавао да се прикачим
+      путницима у школи, јер су могли раније са часова, одговор је био да је Каћ близу и нисам у тој групи. Тек сада се осврћући, толико сам
+      срећан што сам тамо одрастао и поносим се својим местом одрастања, јер ми је толико тога различитог дало .........
+    </p>
+
+    <p>
+      Нит везану за голубове ни у најлуђим годинама у сваком погледу, нисам губио. Недељом сам знао да скокнем до Темеринске или на чекање
+      голубова код Пере Попова, чика Бате.... субота вече излазак у град али недеља у 7 ујутру знало се, негде морам да одем и видим голубове.....
+    </p>
+
+  </div>
+
+ 
+
+
+        <div class="hero-cta" style="margin-top:22px;">
+          <a href="golubovi.html#autor" class="btn-ghost">
+            <i class="fa-solid fa-arrow-left"></i> назад на страницу
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- isti footer + reveal script -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+  <script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'sr',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+
+  function translateLanguage(lang) {
+    localStorage.setItem('selectedLanguage', lang);
+
+    if (lang === 'sr') {
+      document.cookie = "googtrans=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
+      location.reload();
+      return;
+    }
+
+    const select = document.querySelector(".goog-te-combo");
+    if (select) {
+      select.value = lang;
+      select.dispatchEvent(new Event("change"));
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('selectedLanguage') || 'sr';
+    if (savedLang === 'sr') return;
+
+    let tries = 0;
+    const t = setInterval(() => {
+      const select = document.querySelector(".goog-te-combo");
+      if (select) {
+        select.value = savedLang;
+        select.dispatchEvent(new Event("change"));
+        clearInterval(t);
+      }
+      if (++tries > 30) clearInterval(t);
+    }, 100);
+  });
+</script>
+<script>
+  const langSwitcher = document.getElementById('langSwitcher');
+  const langBtn = document.getElementById('langBtn');
+
+  if (langSwitcher && langBtn) {
+    langBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langSwitcher.classList.toggle('open');
+    });
+
+    langSwitcher.querySelectorAll('[data-lang]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        translateLanguage(btn.dataset.lang);
+        langSwitcher.classList.remove('open');
+      });
+    });
+
+    document.addEventListener('click', () => {
+      langSwitcher.classList.remove('open');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') langSwitcher.classList.remove('open');
+    });
+  }
+</script>
+
+<div id="google_translate_element" style="display:none;"></div>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+
+</body>
+</html>
