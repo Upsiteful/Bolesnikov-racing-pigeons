@@ -1255,6 +1255,25 @@ iframe.goog-te-banner-frame { display: none !important; }
 }
 .pdf-cta i{ font-size:12px; }
 
+.pdf-thumb--icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height: 140px;           /* da ikona ne “nestane” kad je mali ekran */
+}
+
+.pdf-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:100%;
+}
+
+.pdf-thumb--icon i{
+  font-size: 46px;             /* malo veće za mobilni */
+  line-height: 1;
+}
 
     </style>
 </head>
@@ -2086,6 +2105,7 @@ console.warn("Stack:", e?.stack);
 
 </body>
 </html>
+
 
 
 
