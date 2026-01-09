@@ -1692,59 +1692,12 @@ iframe.goog-te-banner-frame { display: none !important; }
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.js"></script>
-<script>
-  (function(){
-    const cards = document.querySelectorAll('.pdf-card[data-pdf]');
 
-    // PDF.js worker
-    if (window.pdfjsLib) {
-      pdfjsLib.GlobalWorkerOptions.workerSrc =
-        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.worker.min.js";
-    }
 
-//     async function renderThumb(card){
-//       const url = card.getAttribute('data-pdf');
-//       const canvas = card.querySelector('canvas');
-//       if (!url || !canvas || !window.pdfjsLib) return;
-
-//       try {
-//         const pdf = await pdfjsLib.getDocument(url).promise;
-//         const page = await pdf.getPage(1);
-
-//         // scale: prilagodi kvalitet/performanse
-//         const viewport = page.getViewport({ scale: 1.2 });
-//         const ctx = canvas.getContext('2d');
-
-//         canvas.width = viewport.width;
-//         canvas.height = viewport.height;
-
-//         await page.render({ canvasContext: ctx, viewport }).promise;
-//       } catch (e) {
-//         // fallback: ostaje tamna pozadina, i dalje klik radi
-//        console.warn("PDF thumb failed:", url);
-// console.warn("Message:", e?.message || e);
-// console.warn("Name:", e?.name);
-// console.warn("Stack:", e?.stack);
-
-//       }
-//     }
-
-    // renderuj lenjo (kada uđe u viewport) da ne uspori stranicu
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        obs.unobserve(entry.target);
-        renderThumb(entry.target);
-      });
-    }, { threshold: 0.15 });
-
-    cards.forEach(c => obs.observe(c));
-  })();
-</script>
 
 </body>
 </html>
+
 
 
 
