@@ -1931,14 +1931,30 @@ iframe.goog-te-banner-frame { display: none !important; }
     }, 'google_translate_element');
   }
 
-  function translateLanguage(lang) {
-    localStorage.setItem('selectedLanguage', lang);
+ function translateLanguage(lang) {
+    // GitHub Pages project path: /RepoName/
+    const repo = location.pathname.split("/")[1];
+    const basePath = repo ? `/${repo}/` : "/";
 
-    if (lang === 'sr') {
-      document.cookie = "googtrans=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
-      location.reload();
+    if (lang === "sr") {
+      // 1) očisti izbor jezika
+      localStorage.removeItem("selectedLanguage");
+
+      // 2) obriši googtrans na oba path-a (ovo je ključ za GitHub)
+      document.cookie = "googtrans=; Max-Age=0; path=/";
+      document.cookie = `googtrans=; Max-Age=0; path=${basePath}`;
+
+      // 3) idi na čistu srpsku verziju (repo root)
+      location.href = basePath;
       return;
     }
+
+    // Ostali jezici: upamti + prebacivanje
+    localStorage.setItem("selectedLanguage", lang);
+
+    // postavi cookie na oba path-a (stabilnije)
+    document.cookie = `googtrans=/sr/${lang}; path=/`;
+    document.cookie = `googtrans=/sr/${lang}; path=${basePath}`;
 
     const select = document.querySelector(".goog-te-combo");
     if (select) {
@@ -2031,6 +2047,7 @@ iframe.goog-te-banner-frame { display: none !important; }
 
 </body>
 </html>
+
 
 
 
