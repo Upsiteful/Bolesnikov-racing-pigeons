@@ -1966,6 +1966,11 @@ iframe.goog-te-banner-frame { display: none !important; }
   document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('selectedLanguage') || 'sr';
     if (savedLang === 'sr') return;
+if ((localStorage.getItem("selectedLanguage") || "sr") === "sr") {
+  document.cookie = "googtrans=; Max-Age=0; path=/";
+  document.cookie = `googtrans=; Max-Age=0; path=${basePath}`;
+  return;
+}
 
     let tries = 0;
     const t = setInterval(() => {
@@ -2047,6 +2052,7 @@ iframe.goog-te-banner-frame { display: none !important; }
 
 </body>
 </html>
+
 
 
 
